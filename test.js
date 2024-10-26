@@ -3,17 +3,41 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function() {
-        if(this.read === false){
-            return `${this.title} by ${this.author}, ${this.pages} pages, not read yet`;
-        }
-        else {
-            return `${this.title} by ${this.author}, ${this.pages} pages, read`;
-        }
-    };
-};
-
-
-const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', 295, false);
-theHobbit.info(); // "The Hobbit by J.R.R. Tolkien, 295 pages, not read yet"
-console.log(theHobbit.info());
+ }
+ 
+ const myLibrary = [];
+ 
+ function displayBooks() {
+    const catalog = document.getElementById("book-catalog");
+    catalog.innerHTML = '';
+ 
+    myLibrary.forEach((book, index) => {
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("book");
+        bookDiv.textContent = `'${book.title}' by '${book.author}', ${book.pages} pages, ${book.read ? 'read' : 'not read yet'}`;
+        catalog.appendChild(bookDiv);
+    });
+ }
+ 
+ document.getElementById("new-book-button").addEventListener("click", () => {
+    const form = document.getElementById("book-form");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+ });
+ 
+ document.getElementById("book-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+ 
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = parseInt(document.getElementById("pages").value);
+    const read = document.getElementById("read").checked;
+ 
+    const newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+ 
+    document.getElementById("book-form").reset();
+    document.getElementById("book-form").style.display = "none";
+ 
+    displayBooks();
+ });
+ 

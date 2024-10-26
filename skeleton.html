@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalog</title>
+</head>
+<body>
+    <h1>My Book Catalog</h1>
+    <!-- Container where books will be displayed -->
+    <div id="book-catalog"></div>
+    
+    <!-- Button to add a new book -->
+    <button id="new-book-button">New Book</button>
+    
+    <!-- Form for adding a new book -->
+    <form id="book-form" style="display: none;">
+        <label>Title: <input type="text" id="title" required></label><br>
+        <label>Author: <input type="text" id="author" required></label><br>
+        <label>Pages: <input type="number" id="pages" required></label><br>
+        <label>
+            Read: 
+            <input type="checkbox" id="read">
+        </label><br>
+        <button type="submit">Add Book</button>
+    </form>
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
